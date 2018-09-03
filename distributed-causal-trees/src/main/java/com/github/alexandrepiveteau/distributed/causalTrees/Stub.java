@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-include ':app'
-include ':distributed-causal-trees'
-include ':distributed-cvrdts'
-include ':distributed-woot'
+package com.github.alexandrepiveteau.distributed.causalTrees;
+
+public class Stub {
+}

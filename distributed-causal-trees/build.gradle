@@ -22,7 +22,15 @@
  * SOFTWARE.
  */
 
-include ':app'
-include ':distributed-causal-trees'
-include ':distributed-cvrdts'
-include ':distributed-woot'
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.alexandrepiveteau'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
