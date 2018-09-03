@@ -22,16 +22,26 @@
  * SOFTWARE.
  */
 
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
-apply plugin: 'com.github.dcendents.android-maven'
+package com.github.alexandrepiveteau.distributed.cvrdts
 
-group='com.github.alexandrepiveteau'
+/**
+ * Generates a new empty instance of a [MCSet]. This method will be part of the only publicly
+ * available constructors for generating some [MCSet] instances.
+ *
+ * @param T The type of the elements of this [MCSet].
+ *
+ * @author Alexandre Piveteau
+ */
+fun <T> emptyMCSet() = MCSet<T>()
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
-    api "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.1.0"
-}
-
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+/**
+ * Generates a new instance of a [MCSet]. This method will be the only publicly available
+ * constructor for generating some [MCSet] instances.
+ *
+ * @param elements The elements that the [MCSet] instance should be generated with.
+ *
+ * @param T The type of the elements of this [MCSet].
+ *
+ * @author Alexandre Piveteau
+ */
+fun <T> mcSetOf(vararg elements: T) = MCSet(elements.map { it to 0 }.toMap())

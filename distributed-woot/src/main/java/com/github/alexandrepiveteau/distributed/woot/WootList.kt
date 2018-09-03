@@ -22,16 +22,19 @@
  * SOFTWARE.
  */
 
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
-apply plugin: 'com.github.dcendents.android-maven'
+package com.github.alexandrepiveteau.distributed.woot
 
-group='com.github.alexandrepiveteau'
-
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
-    api "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.1.0"
-}
-
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+/**
+ * An implementation of a [List] that uses the representation of the [WootList] provided by the
+ * method [WootSequence.value].
+ *
+ * TODO : Support the MutableList behavior at some point.
+ *
+ * @param sequence The [WootSequence] that will be used in order to internally represent the [List].
+ *
+ * @param S The type of the site identifiers that will be used. Must be [Comparable].
+ * @param T The type of the elements that are present in this [WootSequence].
+ *
+ * @author Alexandre Piveteau
+ */
+class WootList<in S: Comparable<S>, out T>(private val sequence: WootSequence<S, T>): List<T> by sequence.value()
