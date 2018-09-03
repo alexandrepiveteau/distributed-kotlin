@@ -22,16 +22,8 @@
  * SOFTWARE.
  */
 
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
-apply plugin: 'com.github.dcendents.android-maven'
+package com.github.alexandrepiveteau.distributed.causalTrees
 
-group='com.github.alexandrepiveteau'
+fun <E, S> emptyCausalTree(): CausalTree<E, S> = EmptyCausalTree()
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
-    api "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.1.0"
-}
-
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+fun <E, S> causalTreeOf(vararg yarn: Pair<CausalTreeYarn<E>, S>): CausalTree<E, S> = TODO()

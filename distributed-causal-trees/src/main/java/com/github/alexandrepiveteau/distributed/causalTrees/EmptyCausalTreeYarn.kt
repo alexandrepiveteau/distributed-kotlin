@@ -22,16 +22,22 @@
  * SOFTWARE.
  */
 
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
-apply plugin: 'com.github.dcendents.android-maven'
+package com.github.alexandrepiveteau.distributed.causalTrees
 
-group='com.github.alexandrepiveteau'
-
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
-    api "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.1.0"
+/**
+ * An implementation of a [CausalTreeYarn] that will be completely empty. The benefits of using a
+ * completely empty yarn is that it can be used for dedicated methods and tasks that require an
+ * immutable and optimized yarn to be delivered.
+ *
+ *  @param E The type of the elements contained in the atoms of this empty yarn.
+ */
+class EmptyCausalTreeYarn<E>: CausalTreeYarn<E> {
+    override val size = 0
+    override fun contains(element: CausalTreeAtom<E>) = false
+    override fun containsAll(elements: Collection<CausalTreeAtom<E>>) = elements.isNotEmpty()
+    override fun isEmpty() = true
+    override fun iterator() = object : Iterator<CausalTreeAtom<E>> {
+        override fun hasNext() = false
+        override fun next() = error("There are no elements in this yarn.")
+    }
 }
-
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"

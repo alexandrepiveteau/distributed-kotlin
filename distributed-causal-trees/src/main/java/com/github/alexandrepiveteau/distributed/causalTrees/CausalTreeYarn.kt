@@ -22,16 +22,21 @@
  * SOFTWARE.
  */
 
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
-apply plugin: 'com.github.dcendents.android-maven'
+package com.github.alexandrepiveteau.distributed.causalTrees
 
-group='com.github.alexandrepiveteau'
+/**
+ * An interface representing a yarn, which will be an append-only data structure in which the
+ * different elements are put by a different site. Each single site will feature its own version
+ * of a yarn, which will then be combined with multiple sites to form the final data structure.
+ */
+interface CausalTreeYarn<E>: Collection<CausalTreeAtom<E>> {
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
-    api "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.1.0"
+    /**
+     * An object representing the root of a yarn in a [CausalTree]. Each [CausalTree] will always
+     * have at least one instance of a [CausalTreeAtom] referencing this [Root] as the cause of one
+     * operation.
+     *
+     * The root instance will be the same for all the yarns that an atom can be put on.
+     */
+    object Root
 }
-
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"

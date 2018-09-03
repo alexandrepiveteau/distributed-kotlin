@@ -22,16 +22,22 @@
  * SOFTWARE.
  */
 
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
-apply plugin: 'com.github.dcendents.android-maven'
+package com.github.alexandrepiveteau.distributed.causalTrees
 
-group='com.github.alexandrepiveteau'
+import com.github.alexandrepiveteau.functional.monads.Either
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
-    api "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.1.0"
-}
-
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+/**
+ * A data class representing the different functions that will be available in a [CausalTreeAtom].
+ * The responsibility of a [CausalTreeAtom] is to keep a reference to a single instance, as well as
+ * the causality relation between different elements of the data structure.
+ *
+ * @param cause An [Either] monad, indicating whether the cause of this particular atom is the root
+ *              or a posterior atom.
+ * @param value The error that will be contained in this atom. This should be an atomic, commutative
+ *              operation.
+ *
+ * @param E The type of the element that will be contained within this atom.
+ */
+data class CausalTreeAtom<E> (
+        val cause: Either<CausalTreeYarn.Root, CausalTreeAtom<E>>,
+        val value: E)

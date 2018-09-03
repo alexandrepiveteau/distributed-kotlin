@@ -22,16 +22,9 @@
  * SOFTWARE.
  */
 
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
-apply plugin: 'com.github.dcendents.android-maven'
+package com.github.alexandrepiveteau.distributed.causalTrees
 
-group='com.github.alexandrepiveteau'
-
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
-    api "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.1.0"
+// TODO : Document this.
+class EmptyCausalTree<E, S>: CausalTree<E, S> {
+    override fun get(site: S): CausalTreeYarn<E> = EmptyCausalTreeYarn()
 }
-
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"

@@ -22,7 +22,9 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees;
+package com.github.alexandrepiveteau.distributed.causalTrees
 
-public class Stub {
+interface CausalTree<E, in S> {
+
+    operator fun get(site: S): CausalTreeYarn<E>
 }
