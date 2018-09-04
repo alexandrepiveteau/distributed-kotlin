@@ -26,3 +26,9 @@ dependencies {
 	implementation "com.github.alexandrepiveteau.distributed-kotlin:distributed-woot:0.1.0"
 }
 ```
+
+## Usage
+The library contains the following modules :
+
+- **distributed-cvrdts** - An implementation of some popular **CvRDTs**, including `GSet<T>`, `PNSet<T>` and `MCSet<T>`.
+- **distributed-woot** - An implementation of the **Woot** linear data structure.
