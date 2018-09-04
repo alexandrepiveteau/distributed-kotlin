@@ -26,11 +26,26 @@ package com.github.alexandrepiveteau.distributed.sample
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.github.alexandrepiveteau.distributed.cvrdts.GSet
+import com.github.alexandrepiveteau.distributed.cvrdts.MCSet
+import com.github.alexandrepiveteau.distributed.cvrdts.emptyGSet
+import com.github.alexandrepiveteau.distributed.cvrdts.emptyMCSet
 
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        var first: MCSet<String> = emptyMCSet()
+        var second: MCSet<String> = emptyMCSet()
+
+        first += "Alice"
+        first += "Bob"
+        first -= "Bob"
+        second += "Bob"
+        second += "Charlie"
+
+        val merged = first.merge(second) // Contains "Alice" and "Charlie".
     }
 }
