@@ -32,3 +32,22 @@ The library contains the following modules :
 
 - **distributed-cvrdts** - An implementation of some popular **CvRDTs**, including `GSet<T>`, `PNSet<T>` and `MCSet<T>`.
 - **distributed-woot** - An implementation of the **Woot** linear data structure.
+
+### distributed-cvrdts
+
+The library offers multiple **CvRDT** data structures. Each data type is a state-based CRDT. Essentially, the `GSet<T>`, `PNSet<T>` and `MCSet<T>` classes all implement the `Set<T>` interface. Each of these data type is immutable, and multiple CRDTs of the same type can be merged by using their `merge(...)` function.
+
+Here is an example of usage for the `MCSet<T>` data type :
+
+```kotlin
+var first: MCSet<String> = emptyMCSet()
+var second: MCSet<String> = emptyMCSet()
+
+first += "Alice"
+first += "Bob"
+first -= "Bob"
+second += "Bob"
+second += "Charlie"
+
+val merged = first.merge(second) // Contains "Alice" and "Charlie".
+```
