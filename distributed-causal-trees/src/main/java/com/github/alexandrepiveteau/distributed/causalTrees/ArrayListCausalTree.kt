@@ -26,7 +26,9 @@ package com.github.alexandrepiveteau.distributed.causalTrees
 
 class ArrayListCausalTree<E, S>: MutableCausalTree<E, S> {
 
+    private val yarns: MutableMap<S, MutableCausalTreeYarn<E, S>> = mutableMapOf()
+
     override fun get(site: S): MutableCausalTreeYarn<E, S> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return yarns.getOrPut(site, { ArrayListCausalTreeYarn() })
     }
 }
