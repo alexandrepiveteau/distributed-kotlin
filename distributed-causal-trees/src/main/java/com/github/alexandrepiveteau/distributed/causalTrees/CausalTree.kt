@@ -24,7 +24,7 @@
 
 package com.github.alexandrepiveteau.distributed.causalTrees
 
-interface CausalTree<E, in S> {
+interface CausalTree<out E, S> {
 
-    operator fun get(site: S): CausalTreeYarn<E>
+    operator fun get(site: S): CausalTreeYarn<E, S>
 }

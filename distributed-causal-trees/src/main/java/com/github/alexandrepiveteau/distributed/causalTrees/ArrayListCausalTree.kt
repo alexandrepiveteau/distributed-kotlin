@@ -26,7 +26,7 @@ package com.github.alexandrepiveteau.distributed.causalTrees
 
 class ArrayListCausalTree<E, S>: MutableCausalTree<E, S> {
 
-    override fun get(site: S): MutableCausalTreeYarn<E> {
+    override fun get(site: S): MutableCausalTreeYarn<E, S> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

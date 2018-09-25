@@ -26,4 +26,4 @@ package com.github.alexandrepiveteau.distributed.causalTrees
 
 fun <E, S> emptyCausalTree(): CausalTree<E, S> = EmptyCausalTree()
 
-fun <E, S> causalTreeOf(vararg yarn: Pair<CausalTreeYarn<E>, S>): CausalTree<E, S> = TODO()
+fun <E, S> causalTreeOf(vararg yarn: Pair<CausalTreeYarn<E, S>, S>): CausalTree<E, S> = TODO()

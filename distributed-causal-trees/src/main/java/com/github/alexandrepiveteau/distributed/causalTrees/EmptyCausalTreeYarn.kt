@@ -31,12 +31,12 @@ package com.github.alexandrepiveteau.distributed.causalTrees
  *
  *  @param E The type of the elements contained in the atoms of this empty yarn.
  */
-class EmptyCausalTreeYarn<E>: CausalTreeYarn<E> {
+class EmptyCausalTreeYarn<E, S>: CausalTreeYarn<E, S> {
     override val size = 0
-    override fun contains(element: CausalTreeAtom<E>) = false
-    override fun containsAll(elements: Collection<CausalTreeAtom<E>>) = elements.isNotEmpty()
+    override fun contains(element: CausalTreeAtom<E, S>) = false
+    override fun containsAll(elements: Collection<CausalTreeAtom<E, S>>) = elements.isNotEmpty()
     override fun isEmpty() = true
-    override fun iterator() = object : Iterator<CausalTreeAtom<E>> {
+    override fun iterator() = object : Iterator<CausalTreeAtom<E, S>> {
         override fun hasNext() = false
         override fun next() = error("There are no elements in this yarn.")
     }

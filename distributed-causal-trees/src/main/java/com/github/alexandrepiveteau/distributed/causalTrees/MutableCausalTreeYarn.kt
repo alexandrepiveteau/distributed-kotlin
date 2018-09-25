@@ -24,4 +24,4 @@
 
 package com.github.alexandrepiveteau.distributed.causalTrees
 
-interface MutableCausalTreeYarn<E>: CausalTreeYarn<E>, MutableCollection<CausalTreeAtom<E>>
+interface MutableCausalTreeYarn<E, S>: CausalTreeYarn<E, S>, MutableCollection<CausalTreeAtom<E, S>>

@@ -29,7 +29,7 @@ package com.github.alexandrepiveteau.distributed.causalTrees
  * different elements are put by a different site. Each single site will feature its own version
  * of a yarn, which will then be combined with multiple sites to form the final data structure.
  */
-interface CausalTreeYarn<E>: Collection<CausalTreeAtom<E>> {
+interface CausalTreeYarn<out E, S>: Collection<CausalTreeAtom<E, S>> {
 
     /**
      * An object representing the root of a yarn in a [CausalTree]. Each [CausalTree] will always

@@ -24,7 +24,7 @@
 
 package com.github.alexandrepiveteau.distributed.causalTrees
 
-interface MutableCausalTree<E, in S>: CausalTree<E, S> {
+interface MutableCausalTree<E, S>: CausalTree<E, S> {
 
-    override fun get(site: S): MutableCausalTreeYarn<E>
+    override fun get(site: S): MutableCausalTreeYarn<E, S>
 }

@@ -37,7 +37,17 @@ import com.github.alexandrepiveteau.functional.monads.Either
  *              operation.
  *
  * @param E The type of the element that will be contained within this atom.
+ * @param S The type of the site identifiers that will be associated with each atom.
+ *
+ * @author Alexandre Piveteau
  */
-data class CausalTreeAtom<E> (
-        val cause: Either<CausalTreeYarn.Root, CausalTreeAtom<E>>,
-        val value: E)
+data class CausalTreeAtom<out E, S> (
+        val cause: Either<CausalTreeYarn.Root, CausalTreeAtom.Identifier<S>>,
+        val identifier: Identifier<S>,
+        val value: E) {
+
+    // Site : Site corresponding to the atom.
+    // Index : Position of the atom in its site yarn.
+    // Timestamp : Lamport timestamp for the associated atom.
+    data class Identifier<out S>(val site: S, val index: Int, val timestamp: Int)
+}

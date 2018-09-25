@@ -27,5 +27,5 @@ package com.github.alexandrepiveteau.distributed.causalTrees
 import com.github.alexandrepiveteau.functional.monads.eitherError
 import com.github.alexandrepiveteau.functional.monads.eitherValue
 
-infix fun <E> E.causedBy(root: CausalTreeYarn.Root): CausalTreeAtom<E> = CausalTreeAtom(eitherError(root), this)
-infix fun <E> E.causedBy(atom: CausalTreeAtom<E>): CausalTreeAtom<E> = CausalTreeAtom(eitherValue(atom), this)
+infix fun <E, S> E.causedBy(root: CausalTreeYarn.Root): CausalTreeAtom<E, S> = CausalTreeAtom(eitherError(root), TODO(), this)
+infix fun <E, S> E.causedBy(atom: CausalTreeAtom<E, S>): CausalTreeAtom<E, S> = CausalTreeAtom(eitherValue(atom.identifier), TODO(), this)

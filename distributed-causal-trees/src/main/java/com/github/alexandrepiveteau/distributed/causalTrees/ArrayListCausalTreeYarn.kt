@@ -28,24 +28,24 @@ package com.github.alexandrepiveteau.distributed.causalTrees
  * An implementation of a [MutableCausalTreeYarn] that internally uses an [ArrayList] to manage the
  * growth of the
  */
-class ArrayListCausalTreeYarn<E>: MutableCausalTreeYarn<E> {
+class ArrayListCausalTreeYarn<E, S>: MutableCausalTreeYarn<E, S> {
 
-    private val yarn = arrayListOf<CausalTreeAtom<E>>()
+    private val yarn = arrayListOf<CausalTreeAtom<E, S>>()
 
     override val size =
             yarn.size
 
-    override fun contains(element: CausalTreeAtom<E>) =
+    override fun contains(element: CausalTreeAtom<E, S>) =
             yarn.contains(element)
 
-    override fun containsAll(elements: Collection<CausalTreeAtom<E>>) =
+    override fun containsAll(elements: Collection<CausalTreeAtom<E, S>>) =
             yarn.containsAll(elements)
 
     override fun isEmpty() =
             yarn.isEmpty()
 
     override fun iterator() =
-            object : MutableIterator<CausalTreeAtom<E>> {
+            object : MutableIterator<CausalTreeAtom<E, S>> {
 
                 private val yarnIterator = yarn.iterator()
 
@@ -59,21 +59,21 @@ class ArrayListCausalTreeYarn<E>: MutableCausalTreeYarn<E> {
                         error("CausalTreeYarns can not have their elements removed.")
             }
 
-    override fun add(element: CausalTreeAtom<E>) =
+    override fun add(element: CausalTreeAtom<E, S>) =
             yarn.add(element)
 
-    override fun addAll(elements: Collection<CausalTreeAtom<E>>) =
+    override fun addAll(elements: Collection<CausalTreeAtom<E, S>>) =
             yarn.addAll(elements)
 
     override fun clear()
             = error("CausalTreeYarns can not have their elements removed.")
 
-    override fun remove(element: CausalTreeAtom<E>) =
+    override fun remove(element: CausalTreeAtom<E, S>) =
             error("CausalTreeYarns can not have their elements removed.")
 
-    override fun removeAll(elements: Collection<CausalTreeAtom<E>>) =
+    override fun removeAll(elements: Collection<CausalTreeAtom<E, S>>) =
             error("CausalTreeYarns can not have their elements removed.")
 
-    override fun retainAll(elements: Collection<CausalTreeAtom<E>>) =
+    override fun retainAll(elements: Collection<CausalTreeAtom<E, S>>) =
             error("CausalTreeYarns can not have their elements removed.")
 }

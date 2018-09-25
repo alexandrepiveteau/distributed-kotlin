@@ -26,5 +26,5 @@ package com.github.alexandrepiveteau.distributed.causalTrees
 
 // TODO : Document this.
 class EmptyCausalTree<E, S>: CausalTree<E, S> {
-    override fun get(site: S): CausalTreeYarn<E> = EmptyCausalTreeYarn()
+    override fun get(site: S): CausalTreeYarn<E, S> = EmptyCausalTreeYarn()
 }
