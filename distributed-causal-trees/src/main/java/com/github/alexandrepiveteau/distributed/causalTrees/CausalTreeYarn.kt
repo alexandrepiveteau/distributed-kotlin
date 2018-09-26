@@ -22,33 +22,21 @@
  * SOFTWARE.
  */
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+package com.github.alexandrepiveteau.distributed.causalTrees
 
-android {
-    compileSdkVersion 28
-    defaultConfig {
-        applicationId "com.github.alexandrepiveteau.distributed.sample"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "0.1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
+/**
+ * An interface representing a yarn, which will be an append-only data structure in which the
+ * different elements are put by a different site. Each single site will feature its own version
+ * of a yarn, which will then be combined with multiple sites to form the final data structure.
+ */
+interface CausalTreeYarn<out E, S>: Collection<CausalTreeAtom<E, S>> {
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.61"
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-    implementation project(':distributed-causal-trees')
-    implementation project(':distributed-cvrdts')
-    implementation project(':distributed-woot')
+    /**
+     * An object representing the root of a yarn in a [CausalTree]. Each [CausalTree] will always
+     * have at least one instance of a [CausalTreeAtom] referencing this [Root] as the cause of one
+     * operation.
+     *
+     * The root instance will be the same for all the yarns that an atom can be put on.
+     */
+    object Root
 }

@@ -22,4 +22,7 @@
  * SOFTWARE.
  */
 
-include ':app', ':distributed-cvrdts', ':distributed-woot'
+include ':app'
+include ':distributed-causal-trees'
+include ':distributed-cvrdts'
+include ':distributed-woot'

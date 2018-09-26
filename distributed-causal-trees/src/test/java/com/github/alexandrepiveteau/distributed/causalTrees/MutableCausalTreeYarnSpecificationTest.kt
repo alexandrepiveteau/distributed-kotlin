@@ -22,33 +22,10 @@
  * SOFTWARE.
  */
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+package com.github.alexandrepiveteau.distributed.causalTrees
 
-android {
-    compileSdkVersion 28
-    defaultConfig {
-        applicationId "com.github.alexandrepiveteau.distributed.sample"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "0.1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.61"
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-    implementation project(':distributed-causal-trees')
-    implementation project(':distributed-cvrdts')
-    implementation project(':distributed-woot')
-}
+@RunWith(JUnit4::class)
+class MutableCausalTreeYarnSpecificationTest

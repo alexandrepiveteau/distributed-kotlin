@@ -22,33 +22,22 @@
  * SOFTWARE.
  */
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+package com.github.alexandrepiveteau.distributed.causalTrees
 
-android {
-    compileSdkVersion 28
-    defaultConfig {
-        applicationId "com.github.alexandrepiveteau.distributed.sample"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "0.1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+/**
+ * An implementation of a [CausalTreeYarn] that will be completely empty. The benefits of using a
+ * completely empty yarn is that it can be used for dedicated methods and tasks that require an
+ * immutable and optimized yarn to be delivered.
+ *
+ *  @param E The type of the elements contained in the atoms of this empty yarn.
+ */
+class EmptyCausalTreeYarn<E, S>: CausalTreeYarn<E, S> {
+    override val size = 0
+    override fun contains(element: CausalTreeAtom<E, S>) = false
+    override fun containsAll(elements: Collection<CausalTreeAtom<E, S>>) = elements.isNotEmpty()
+    override fun isEmpty() = true
+    override fun iterator() = object : Iterator<CausalTreeAtom<E, S>> {
+        override fun hasNext() = false
+        override fun next() = error("There are no elements in this yarn.")
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.61"
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-    implementation project(':distributed-causal-trees')
-    implementation project(':distributed-cvrdts')
-    implementation project(':distributed-woot')
 }
