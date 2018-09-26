@@ -24,11 +24,9 @@
 
 package com.github.alexandrepiveteau.distributed.sample
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.github.alexandrepiveteau.distributed.cvrdts.GSet
 import com.github.alexandrepiveteau.distributed.cvrdts.MCSet
-import com.github.alexandrepiveteau.distributed.cvrdts.emptyGSet
 import com.github.alexandrepiveteau.distributed.cvrdts.emptyMCSet
 
 class HomeActivity : AppCompatActivity() {
