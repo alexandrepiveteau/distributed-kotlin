@@ -24,3 +24,40 @@
 
 package com.github.alexandrepiveteau.distributed.causalTrees
 
+import org.junit.Assert
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
+
+@RunWith(JUnit4::class)
+class CausalTreeSpecificationTest {
+
+    @Test
+    fun test_emptyCausalTree_containsAnyYarn() {
+        val tree = emptyCausalTree<ExampleOperation, ExampleSite>()
+
+        Assert.assertNotNull(tree[ExampleSite.Alice])
+        Assert.assertNotNull(tree[ExampleSite.Bob])
+        Assert.assertNotNull(tree[ExampleSite.Charlie])
+    }
+
+    @Test
+    fun test_emptyCausalTree_containsNoOperations() {
+        val tree = emptyCausalTree<ExampleOperation, ExampleSite>()
+
+        Assert.assertTrue(tree[ExampleSite.Alice].isEmpty())
+        Assert.assertTrue(tree[ExampleSite.Bob].isEmpty())
+        Assert.assertTrue(tree[ExampleSite.Charlie].isEmpty())
+    }
+
+    @Test
+    fun test_nonEmptyCausalTree_containsCorrectOperations() {
+        val yarn = causalTreeYarnOf<ExampleOperation, ExampleSite>(ExampleOperation.First causedBy CausalTreeYarn.Root)
+        val tree = causalTreeOf(yarn to ExampleSite.Alice)
+
+        Assert.assertTrue(tree[ExampleSite.Alice].isNotEmpty())
+        Assert.assertTrue(tree[ExampleSite.Alice].size == 1)
+        Assert.assertTrue(tree[ExampleSite.Bob].isEmpty())
+        Assert.assertTrue(tree[ExampleSite.Charlie].isEmpty())
+    }
+}

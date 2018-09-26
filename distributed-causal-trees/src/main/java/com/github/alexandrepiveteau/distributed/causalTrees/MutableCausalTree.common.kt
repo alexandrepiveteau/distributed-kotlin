@@ -25,3 +25,4 @@
 package com.github.alexandrepiveteau.distributed.causalTrees
 
 fun <E, S> mutableCausalTreeOf(vararg yarn: Pair<MutableCausalTreeYarn<E, S>, S>): MutableCausalTree<E, S> = TODO()
+fun <E, S> mutableCausalTreeYarnOf(vararg atoms: CausalTreeAtom<E, S>): MutableCausalTreeYarn<E, S> = TODO()

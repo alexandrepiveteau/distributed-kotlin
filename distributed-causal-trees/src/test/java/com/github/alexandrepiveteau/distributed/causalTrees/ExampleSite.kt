@@ -24,10 +24,8 @@
 
 package com.github.alexandrepiveteau.distributed.causalTrees
 
-fun <E, S> emptyCausalTree(): CausalTree<E, S> = EmptyCausalTree()
-
-fun <E, S> emptyCausalTreeYarn(): CausalTreeYarn<E, S> = TODO()
-
-fun <E, S> causalTreeOf(vararg yarn: Pair<CausalTreeYarn<E, S>, S>): CausalTree<E, S> = TODO()
-
-fun <E, S> causalTreeYarnOf(vararg yarn: CausalTreeAtom<E, S>): CausalTreeYarn<E, S> = TODO()
+enum class ExampleSite {
+    Alice,
+    Bob,
+    Charlie,
+}

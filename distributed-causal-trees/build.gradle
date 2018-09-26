@@ -30,7 +30,7 @@ group='com.github.alexandrepiveteau'
 
 dependencies {
     testImplementation "junit:junit:4.12"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.61"
     api "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.2.0"
 }
 
