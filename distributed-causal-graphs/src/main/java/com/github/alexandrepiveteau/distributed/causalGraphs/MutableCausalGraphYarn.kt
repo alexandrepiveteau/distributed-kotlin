@@ -22,9 +22,10 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
-interface MutableCausalGraph<O, S>: CausalGraph<O, S> {
-    override operator fun get(site: S): MutableCausalGraphYarn<O, S>
-    fun merge(other: MutableCausalGraph<O, S>)
+interface MutableCausalGraphYarn<O, S>: CausalGraphYarn<O, S> {
+    fun insert(operation: O, dependencies: Set<CausalGraphIdentifier<S>> = emptySet()): CausalGraphIdentifier<S>
+    fun merge(other: MutableCausalGraphYarn<O, S>)
+    fun remove(identifier: CausalGraphIdentifier<S>)
 }

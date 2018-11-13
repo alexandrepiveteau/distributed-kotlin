@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
 interface CausalGraphYarn<O, S>: List<CausalGraphAtom<O, S>> {
     val site: S

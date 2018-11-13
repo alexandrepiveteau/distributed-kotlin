@@ -22,26 +22,21 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
 /**
- * A class representing a [CausalGraphAtom], that will always be contained within an instance of
- * a [CausalGraphYarn]. The responsibility of the atom is to keep track of the [operation] that is
- * in the Yarn, as well as the unique [CausalGraphIdentifier] across the [CausalGraph], and the
- * [Set] of all [dependencies] that this [CausalGraphAtom] has.
+ * A class representing a [CausalGraphIdentifier], that will be in charge of uniquely identifying
+ * an instance of a [CausalGraphAtom]. Each identifier will act as a [Pair] of the site [S] that
+ * the [CausalGraphAtom] was issued by, as well as an [Int] indicating the "index" of issuance for
+ * the operation at this specific site.
  *
- * The dependencies help define the causality relationship across multiple sites, or what an
- * operation refers (for instance, when the operation is a delete token). The dependencies will be
- * referenced only by their [CausalGraphIdentifier]s.
+ * Using the [index], a total order of operations can be created on a per-site basis. This order
+ * does not reflect any sort of causality between operations - it just provides some information
+ * relevant to the source of operations.
  *
- * @param O The type of the operations that will be contained in this [CausalGraph].
  * @param S The type of the sites that will be managing the Yarns of this [CausalGraph].
  *
- * @param operation The instance of the operation saved in this atom.
- * @param identifier The unique [CausalGraphIdentifier] for this atom and operation.
- * @param dependencies The [Set] of causality dependencies that this atom has in the [CausalGraph].
+ * @param site The site that will have issued the atom linked to this [CausalGraphIdentifier].
+ * @param index The index of the operation referenced by this [CausalGraphIdentifier].
  */
-data class CausalGraphAtom<O, S>(
-        val operation: O,
-        val identifier: CausalGraphIdentifier<S>,
-        val dependencies: Set<CausalGraphIdentifier<S>>)
+data class CausalGraphIdentifier<S>(val site: S, val index: Int)

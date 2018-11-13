@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
 import com.github.alexandrepiveteau.functional.monads.fold
 import com.github.alexandrepiveteau.functional.monads.map

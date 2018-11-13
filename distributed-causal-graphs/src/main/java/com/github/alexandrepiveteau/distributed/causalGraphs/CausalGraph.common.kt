@@ -22,10 +22,13 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
-interface MutableCausalGraphYarn<O, S>: CausalGraphYarn<O, S> {
-    fun insert(operation: O, dependencies: Set<CausalGraphIdentifier<S>> = emptySet()): CausalGraphIdentifier<S>
-    fun merge(other: MutableCausalGraphYarn<O, S>)
-    fun remove(identifier: CausalGraphIdentifier<S>)
-}
+/**
+ * Returns an instance of a [CausalGraph] that will be empty. This could be useful when some default
+ * values have to be transmitted and forwarded from an API call.
+ *
+ * @param O The type of the operations that will be contained in this [CausalGraph].
+ * @param S The type of the sites that will be managing the Yarns of this [CausalGraph].
+ */
+fun <O, S> emptyCausalGraph(): CausalGraph<O, S> = mutableCausalGraphOf()

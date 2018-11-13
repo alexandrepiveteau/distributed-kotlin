@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
 /**
  * An interface representing a [CausalGraph] data structure. A [CausalGraph] will represent the
