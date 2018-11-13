@@ -22,33 +22,6 @@
  * SOFTWARE.
  */
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
-android {
-    compileSdkVersion 28
-    defaultConfig {
-        applicationId "com.github.alexandrepiveteau.distributed.sample"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.0"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-    implementation project(':distributed-causal-graphs')
-    implementation project(':distributed-cvrdts')
-    implementation project(':distributed-woot')
-}
+fun <O, S> emptyCausalGraphYarn(site: S): CausalGraphYarn<O, S> = mutableCausalGraphYarnOf(site)

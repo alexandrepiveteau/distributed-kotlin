@@ -22,9 +22,9 @@ You can now add the library modules in your application **build.gradle** file :
 
 ```groovy
 dependencies {
-    implementation "com.github.alexandrepiveteau.distributed-kotlin:distributed-causal-graphs:1.0.1"
-	implementation "com.github.alexandrepiveteau.distributed-kotlin:distributed-cvrdts:1.0.1"
-	implementation "com.github.alexandrepiveteau.distributed-kotlin:distributed-woot:1.0.1"
+    implementation "com.github.alexandrepiveteau.distributed-kotlin:distributed-causal-graphs:1.1.0"
+	implementation "com.github.alexandrepiveteau.distributed-kotlin:distributed-cvrdts:1.1.0"
+	implementation "com.github.alexandrepiveteau.distributed-kotlin:distributed-woot:1.1.0"
 }
 ```
 
