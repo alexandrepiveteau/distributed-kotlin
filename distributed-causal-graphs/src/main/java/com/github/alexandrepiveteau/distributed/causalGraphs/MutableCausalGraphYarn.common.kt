@@ -25,3 +25,4 @@
 package com.github.alexandrepiveteau.distributed.causalGraphs
 
 fun <O, S> mutableCausalGraphYarnOf(site: S): MutableCausalGraphYarn<O, S> = ArrayListCausalGraphYarn(mutableListOf(), site)
+fun <O, S> mutableCausalGraphYarnOf(site: S, elements: MutableList<CausalGraphAtom<O, S>>): MutableCausalGraphYarn<O, S> = ArrayListCausalGraphYarn(elements, site)
