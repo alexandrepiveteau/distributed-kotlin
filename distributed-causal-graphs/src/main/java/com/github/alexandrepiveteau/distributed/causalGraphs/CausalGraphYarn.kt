@@ -22,7 +22,9 @@
  * SOFTWARE.
  */
 
-include ':app'
-include ':distributed-causal-graphs'
-include ':distributed-cvrdts'
-include ':distributed-woot'
+package com.github.alexandrepiveteau.distributed.causalGraphs
+
+interface CausalGraphYarn<O, S>: List<CausalGraphAtom<O, S>> {
+    val site: S
+    fun merge(other: CausalGraphYarn<O, S>): CausalGraphYarn<O, S>
+}

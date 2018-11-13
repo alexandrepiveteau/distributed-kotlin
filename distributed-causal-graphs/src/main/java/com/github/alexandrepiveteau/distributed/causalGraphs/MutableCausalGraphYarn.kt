@@ -22,7 +22,10 @@
  * SOFTWARE.
  */
 
-include ':app'
-include ':distributed-causal-graphs'
-include ':distributed-cvrdts'
-include ':distributed-woot'
+package com.github.alexandrepiveteau.distributed.causalGraphs
+
+interface MutableCausalGraphYarn<O, S>: CausalGraphYarn<O, S> {
+    fun insert(operation: O, dependencies: Set<CausalGraphIdentifier<S>> = emptySet()): CausalGraphIdentifier<S>
+    fun merge(other: MutableCausalGraphYarn<O, S>)
+    fun remove(identifier: CausalGraphIdentifier<S>)
+}

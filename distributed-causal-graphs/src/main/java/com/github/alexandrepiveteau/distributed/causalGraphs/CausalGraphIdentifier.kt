@@ -22,7 +22,21 @@
  * SOFTWARE.
  */
 
-include ':app'
-include ':distributed-causal-graphs'
-include ':distributed-cvrdts'
-include ':distributed-woot'
+package com.github.alexandrepiveteau.distributed.causalGraphs
+
+/**
+ * A class representing a [CausalGraphIdentifier], that will be in charge of uniquely identifying
+ * an instance of a [CausalGraphAtom]. Each identifier will act as a [Pair] of the site [S] that
+ * the [CausalGraphAtom] was issued by, as well as an [Int] indicating the "index" of issuance for
+ * the operation at this specific site.
+ *
+ * Using the [index], a total order of operations can be created on a per-site basis. This order
+ * does not reflect any sort of causality between operations - it just provides some information
+ * relevant to the source of operations.
+ *
+ * @param S The type of the sites that will be managing the Yarns of this [CausalGraph].
+ *
+ * @param site The site that will have issued the atom linked to this [CausalGraphIdentifier].
+ * @param index The index of the operation referenced by this [CausalGraphIdentifier].
+ */
+data class CausalGraphIdentifier<S>(val site: S, val index: Int)

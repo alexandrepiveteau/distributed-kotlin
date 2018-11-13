@@ -22,7 +22,9 @@
  * SOFTWARE.
  */
 
-include ':app'
-include ':distributed-causal-graphs'
-include ':distributed-cvrdts'
-include ':distributed-woot'
+package com.github.alexandrepiveteau.distributed.causalGraphs
+
+interface MutableCausalGraph<O, S>: CausalGraph<O, S> {
+    override operator fun get(site: S): MutableCausalGraphYarn<O, S>
+    fun merge(other: MutableCausalGraph<O, S>)
+}

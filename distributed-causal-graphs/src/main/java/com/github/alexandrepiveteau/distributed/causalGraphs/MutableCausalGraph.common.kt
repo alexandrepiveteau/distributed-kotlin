@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-include ':app'
-include ':distributed-causal-graphs'
-include ':distributed-cvrdts'
-include ':distributed-woot'
+package com.github.alexandrepiveteau.distributed.causalGraphs
+
+fun <O, S> mutableCausalGraphOf(): MutableCausalGraph<O, S> = HashMapCausalGraph()
+fun <O, S> mutableCausalGraphOf(vararg yarns: Pair<S, MutableCausalGraphYarn<O, S>>): MutableCausalGraph<O, S> = HashMapCausalGraph(yarns.toMap().toMutableMap())
