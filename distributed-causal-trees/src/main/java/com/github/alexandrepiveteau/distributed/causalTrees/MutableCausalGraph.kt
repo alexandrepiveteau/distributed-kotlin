@@ -24,8 +24,7 @@
 
 package com.github.alexandrepiveteau.distributed.causalTrees
 
-import com.github.alexandrepiveteau.functional.monads.eitherError
-import com.github.alexandrepiveteau.functional.monads.eitherValue
-
-infix fun <E, S> E.causedBy(root: CausalTreeYarn.Root): CausalTreeAtom<E, S> = CausalTreeAtom(eitherError(root), TODO(), this)
-infix fun <E, S> E.causedBy(atom: CausalTreeAtom<E, S>): CausalTreeAtom<E, S> = CausalTreeAtom(eitherValue(atom.identifier), TODO(), this)
+interface MutableCausalGraph<O, S>: CausalGraph<O, S> {
+    override operator fun get(site: S): MutableCausalGraphYarn<O, S>
+    fun merge(other: MutableCausalGraph<O, S>)
+}

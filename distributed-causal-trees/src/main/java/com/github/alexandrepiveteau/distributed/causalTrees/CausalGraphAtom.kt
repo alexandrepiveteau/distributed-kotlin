@@ -25,19 +25,23 @@
 package com.github.alexandrepiveteau.distributed.causalTrees
 
 /**
- * An implementation of a [CausalTreeYarn] that will be completely empty. The benefits of using a
- * completely empty yarn is that it can be used for dedicated methods and tasks that require an
- * immutable and optimized yarn to be delivered.
+ * A class representing a [CausalGraphAtom], that will always be contained within an instance of
+ * a [CausalGraphYarn]. The responsibility of the atom is to keep track of the [operation] that is
+ * in the Yarn, as well as the unique [CausalGraphIdentifier] across the [CausalGraph], and the
+ * [Set] of all [dependencies] that this [CausalGraphAtom] has.
  *
- *  @param E The type of the elements contained in the atoms of this empty yarn.
+ * The dependencies help define the causality relationship across multiple sites, or what an
+ * operation refers (for instance, when the operation is a delete token). The dependencies will be
+ * referenced only by their [CausalGraphIdentifier]s.
+ *
+ * @param O The type of the operations that will be contained in this [CausalGraph].
+ * @param S The type of the sites that will be managing the Yarns of this [CausalGraph].
+ *
+ * @param operation The instance of the operation saved in this atom.
+ * @param identifier The unique [CausalGraphIdentifier] for this atom and operation.
+ * @param dependencies The [Set] of causality dependencies that this atom has in the [CausalGraph].
  */
-class EmptyCausalTreeYarn<E, S>: CausalTreeYarn<E, S> {
-    override val size = 0
-    override fun contains(element: CausalTreeAtom<E, S>) = false
-    override fun containsAll(elements: Collection<CausalTreeAtom<E, S>>) = elements.isNotEmpty()
-    override fun isEmpty() = true
-    override fun iterator() = object : Iterator<CausalTreeAtom<E, S>> {
-        override fun hasNext() = false
-        override fun next() = error("There are no elements in this yarn.")
-    }
-}
+data class CausalGraphAtom<O, S>(
+        val operation: O,
+        val identifier: CausalGraphIdentifier<S>,
+        val dependencies: Set<CausalGraphIdentifier<S>>)

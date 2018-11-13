@@ -24,11 +24,5 @@
 
 package com.github.alexandrepiveteau.distributed.causalTrees
 
-class ArrayListCausalTree<E, S>: MutableCausalTree<E, S> {
-
-    private val yarns: MutableMap<S, MutableCausalTreeYarn<E, S>> = mutableMapOf()
-
-    override fun get(site: S): MutableCausalTreeYarn<E, S> {
-        return yarns.getOrPut(site, { ArrayListCausalTreeYarn() })
-    }
-}
+fun <O, S> mutableCausalGraphOf(): MutableCausalGraph<O, S> = HashMapCausalGraph()
+fun <O, S> mutableCausalGraphOf(vararg yarns: Pair<S, MutableCausalGraphYarn<O, S>>): MutableCausalGraph<O, S> = HashMapCausalGraph(yarns.toMap().toMutableMap())

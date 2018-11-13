@@ -24,8 +24,7 @@
 
 package com.github.alexandrepiveteau.distributed.causalTrees
 
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
-
-@RunWith(JUnit4::class)
-class CausalTreeYarnSpecificationTest
+interface CausalGraphYarn<O, S>: List<CausalGraphAtom<O, S>> {
+    val site: S
+    fun merge(other: CausalGraphYarn<O, S>): CausalGraphYarn<O, S>
+}
