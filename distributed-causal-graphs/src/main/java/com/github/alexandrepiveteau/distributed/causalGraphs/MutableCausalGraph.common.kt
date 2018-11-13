@@ -22,10 +22,7 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
-
-@RunWith(JUnit4::class)
-class CausalTreeYarnSpecificationTest
+fun <O, S> mutableCausalGraphOf(): MutableCausalGraph<O, S> = HashMapCausalGraph()
+fun <O, S> mutableCausalGraphOf(vararg yarns: Pair<S, MutableCausalGraphYarn<O, S>>): MutableCausalGraph<O, S> = HashMapCausalGraph(yarns.toMap().toMutableMap())

@@ -22,10 +22,13 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
-import com.github.alexandrepiveteau.functional.monads.eitherError
-import com.github.alexandrepiveteau.functional.monads.eitherValue
-
-infix fun <E, S> E.causedBy(root: CausalTreeYarn.Root): CausalTreeAtom<E, S> = CausalTreeAtom(eitherError(root), TODO(), this)
-infix fun <E, S> E.causedBy(atom: CausalTreeAtom<E, S>): CausalTreeAtom<E, S> = CausalTreeAtom(eitherValue(atom.identifier), TODO(), this)
+/**
+ * Returns an instance of a [CausalGraph] that will be empty. This could be useful when some default
+ * values have to be transmitted and forwarded from an API call.
+ *
+ * @param O The type of the operations that will be contained in this [CausalGraph].
+ * @param S The type of the sites that will be managing the Yarns of this [CausalGraph].
+ */
+fun <O, S> emptyCausalGraph(): CausalGraph<O, S> = mutableCausalGraphOf()

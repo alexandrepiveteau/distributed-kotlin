@@ -22,22 +22,10 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
-/**
- * An implementation of a [CausalTreeYarn] that will be completely empty. The benefits of using a
- * completely empty yarn is that it can be used for dedicated methods and tasks that require an
- * immutable and optimized yarn to be delivered.
- *
- *  @param E The type of the elements contained in the atoms of this empty yarn.
- */
-class EmptyCausalTreeYarn<E, S>: CausalTreeYarn<E, S> {
-    override val size = 0
-    override fun contains(element: CausalTreeAtom<E, S>) = false
-    override fun containsAll(elements: Collection<CausalTreeAtom<E, S>>) = elements.isNotEmpty()
-    override fun isEmpty() = true
-    override fun iterator() = object : Iterator<CausalTreeAtom<E, S>> {
-        override fun hasNext() = false
-        override fun next() = error("There are no elements in this yarn.")
-    }
+interface MutableCausalGraphYarn<O, S>: CausalGraphYarn<O, S> {
+    fun insert(operation: O, dependencies: Set<CausalGraphIdentifier<S>> = emptySet()): CausalGraphIdentifier<S>
+    fun merge(other: MutableCausalGraphYarn<O, S>)
+    fun remove(identifier: CausalGraphIdentifier<S>)
 }

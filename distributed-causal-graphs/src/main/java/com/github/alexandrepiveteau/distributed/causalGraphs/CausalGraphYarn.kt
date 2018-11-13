@@ -22,6 +22,9 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees.examples.simpleCounter
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
-interface SimpleCounter
+interface CausalGraphYarn<O, S>: List<CausalGraphAtom<O, S>> {
+    val site: S
+    fun merge(other: CausalGraphYarn<O, S>): CausalGraphYarn<O, S>
+}

@@ -22,12 +22,9 @@
  * SOFTWARE.
  */
 
-package com.github.alexandrepiveteau.distributed.causalTrees
+package com.github.alexandrepiveteau.distributed.causalGraphs
 
-fun <E, S> emptyCausalTree(): CausalTree<E, S> = EmptyCausalTree()
-
-fun <E, S> emptyCausalTreeYarn(): CausalTreeYarn<E, S> = TODO()
-
-fun <E, S> causalTreeOf(vararg yarn: Pair<CausalTreeYarn<E, S>, S>): CausalTree<E, S> = TODO()
-
-fun <E, S> causalTreeYarnOf(vararg yarn: CausalTreeAtom<E, S>): CausalTreeYarn<E, S> = TODO()
+interface MutableCausalGraph<O, S>: CausalGraph<O, S> {
+    override operator fun get(site: S): MutableCausalGraphYarn<O, S>
+    fun merge(other: MutableCausalGraph<O, S>)
+}
